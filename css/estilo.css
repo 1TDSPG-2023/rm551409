@@ -2,6 +2,7 @@
 @import url("./conteudo.css");
 @import url("./break-point-1004px.css");
 @import url("./rodape.css");
+@import url("./dados.css");
 
 * {
     margin: 0;
