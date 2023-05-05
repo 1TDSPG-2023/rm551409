@@ -84,3 +84,27 @@ frutas.forEach( (fruta) => {
     console.log(`Olha ela : ${fruta}`);
 } ); // <-- ARROW FUNCTION OU FUNÇÃO ANONIMA / FUNÇÃO DE CALLBACK () => {}
 */
+
+
+let nr1 = [1, 2, 3, 4, 5];
+let nr2 = [6, 7, 8, 9, 10];
+console.log(`Array 1 : ${nr1}`);
+console.log(`Array 2 : ${nr2}`);
+
+//CONCATENANDO ARRAYS
+let nr3 = [nr1, nr2];
+console.log(`Novo array : ${nr3}`);
+
+//PERCORRENDO O NOVO ARRAY COM forEach
+
+nr3.forEach( (nr) => {
+    console.log(`Item do novo Array : ${nr}`);
+});
+
+//CONCATENANDO O ARRAY COM O OPERADOR spread( ... )
+nr3 = [...nr1, ...nr2];
+console.log(`Novo array com spread : ${nr3}`);
+
+nr3.forEach( (nr) => {
+    console.log(`Item do novo Array com spread : ${nr}`);
+});
