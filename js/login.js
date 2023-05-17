@@ -1,3 +1,4 @@
+/*
 //GERANDO UM TOKEN COM Math.
 let tokenGerado = Math.random().toString(16).substring(2);
 //console.log(tokenGerado);
@@ -25,12 +26,44 @@ const usuario2 = {
 //let novoNomePropriedade = "tokenzinho";
 //usuario1[novoNomePropriedade] = 12;
 //console.log(usuario1.tokenzinho);
+*/
 
-let listaDeUsuarios = [];
-listaDeUsuarios.push(usuario1);
-listaDeUsuarios.push(usuario2);
+// //CRIANDO OBJETOS
+// let listaDeUsuarios = [
+//     {
+//         nomeCompleto : "Denden da Silva",
+//         nomeUsuario : "denden",
+//         senhaUsuario : "123456"
+//     },
+//     {
+//         nomeCompleto : "Gersu da Silva",
+//         nomeUsuario : "gege",
+//         senhaUsuario : "123456"
+//     },
+//     {
+//         nomeCompleto : "José da Silva",
+//         nomeUsuario : "jose",
+//         senhaUsuario : "123456"
+//     },
+//     {
+//         nomeCompleto : "Paulo das Couves",
+//         nomeUsuario : "paula",
+//         senhaUsuario : "123456"
+//     },
+//     {
+//         nomeCompleto : "Mary Help",
+//         nomeUsuario : "mary",
+//         senhaUsuario : "123456"
+//     },
+//     {
+//         nomeCompleto : "Pedro Silva",
+//         nomeUsuario : "pedro",
+//         senhaUsuario : "123456"
+//     },
+// ];
 
-console.log(listaDeUsuarios);
+//GUARDAR A LISTA DE OBJETOS NO LOCAL-STORAGE
+localStorage.setItem("listaUser", JSON.stringify(listaDeUsuarios));
 
 addEventListener("click", (evt) => {
  
@@ -40,6 +73,9 @@ addEventListener("click", (evt) => {
     if(evt.target.id == "btnSubmit"){
         
         try{
+            //RECUPERAR A LISTA DE USUARIOS DO LOCALSTORAGE
+            let listaDeUsuarios = JSON.parse(localStorage.getItem("listaUser"));
+
             listaDeUsuarios.forEach((usuario) => {
     
                 if(inputUser.value == usuario.nomeUsuario && inputPass.value == usuario.senhaUsuario){
@@ -56,11 +92,16 @@ addEventListener("click", (evt) => {
 
             if(msg == "Validado!") {
                 msgError.setAttribute("style", "color: #00ff00");
-                msgError.innerHTML = "<span><strong>Login efetuado com Sucesso!</strong></span>"
+                msgError.innerHTML = "<span><strong>Login efetuado com Sucesso!</strong></span>";
+
+                //REDIRECT ESPERA 3 SEGUNDOS ANTES DE REDIRECIONAR
+                setTimeout(function(){
+                    window.location.href = "../pages/sucesso.html";
+                }, 3000);
             }
             else {
                 msgError.setAttribute("style", "color: #ff0000");
-                msgError.innerHTML = "<span><strong>Usuário ou Senha incorreto!</strong></span>"
+                msgError.innerHTML = "<span><strong>Usuário ou Senha incorreto!</strong></span>";
             }
         }
     }
