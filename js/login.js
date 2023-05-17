@@ -34,10 +34,10 @@ console.log(listaDeUsuarios);
 
 addEventListener("click", (evt) => {
  
+    const inputUser = document.querySelector("#idUser");
+    const inputPass = document.querySelector("#idPass");
 
     if(evt.target.id == "btnSubmit"){
-        const inputUser = document.querySelector("#idUser");
-        const inputPass = document.querySelector("#idPass");
         
         try{
             listaDeUsuarios.forEach((usuario) => {
@@ -63,5 +63,17 @@ addEventListener("click", (evt) => {
                 msgError.innerHTML = "<span><strong>Usuário ou Senha incorreto!</strong></span>"
             }
         }
+    }
+    else if(evt.target.className == "fa fa-eye" || evt.target.className == "fa fa-eye-slash"){
+
+        if(inputPass.getAttribute("type") == "password"){
+            evt.target.setAttribute("class", "fa fa-eye-slash");
+            inputPass.setAttribute("type", "text");
+        }
+        else{
+            evt.target.setAttribute("class", "fa fa-eye");
+            inputPass.setAttribute("type", "password");
+        }
+
     }
 });
